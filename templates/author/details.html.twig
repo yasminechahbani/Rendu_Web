@@ -1,0 +1,23 @@
+
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Author Details</h1>
+
+    {% if author %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ asset(author.picture) }}" class="card-img-top" alt="{{ author.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ author.name }}</h5>
+                <p class="card-text"><strong>ID:</strong> {{ author.id }}</p>
+                <p class="card-text"><strong>Number of Books:</strong> {{ author.nbrBooks }}</p>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-danger">
+            <p>Author not found.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
