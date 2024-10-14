@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="f35b0c64-188b-4102-9fcd-16513df27b82" name="1ERE_DB_enClasse@127.0.0.1 Mapping">
+      <data-sources db="17a4a15a-f204-445f-9ad1-5723ad4d013b" ddl="96830d2f-982b-4fb2-82e1-88ac401d396e" />
+      <scope>
+        <node kind="schema" qname="1ere_db_enclasse" />
+      </scope>
+    </mapping>
+  </component>
+</project>

@@ -1,0 +1,82 @@
+{# templates/livre/addLivre.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 style="text-align: center; margin-bottom: 20px;">Ajouter / Modifier Livre</h1>
+    <div class="form-container">
+        {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+        <div class="form-group">
+            {{ form_label(form.Ref, 'Référence') }}
+            {{ form_widget(form.Ref, {'attr': {'class': 'form-control', 'placeholder': 'Référence'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.title, 'Titre') }}
+            {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.nbrPages, 'Nombre de Pages') }}
+            {{ form_widget(form.nbrPages, {'attr': {'class': 'form-control', 'placeholder': 'Nombre de Pages'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.Picture, 'URL de l\'Image') }}
+            {{ form_widget(form.Picture, {'attr': {'class': 'form-control', 'placeholder': 'URL de l\'Image'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.author, 'Auteur') }}
+            {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group" style="text-align: center;">
+            {{ form_widget(form.SignMeUp, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    h1 {
+        color: #333;
+    }
+</style>
+{% endblock %}

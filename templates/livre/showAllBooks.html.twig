@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Liste des livres disponibles dans la bibliothèque">
+    <title>Liste des livres</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td {
+            background-color: #f4f4f4;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .no-books {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+        }
+        .add-new {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .add-new:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Liste des livres</h1>
+
+        <form method="get" action="{{ path('app_livre') }}">
+           <!--<input type="text" name="search_ref" placeholder="Rechercher par référence..." value="{{ app.request.get('search_ref') }}">
+            <input type="submit" value="Rechercher">-->
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Référence</th>
+                    <th>Auteur</th>
+                    <th>Titre</th>
+                    <th>Nombre de pages</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in book %}
+                    <tr>
+                        <td>{{ book.ref }}</td>
+                        <td>{{ book.author ? book.author.name : 'N/A' }}</td>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.nbrPages }}</td>
+                        <td>
+                            {% if book.picture %}
+                                <img src="{{ asset('uploads/' ~ book.picture) }}" alt="{{ book.title }}" style="max-width: 50px;">
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('app_livre_update', { id: book.id }) }}" class="btn">Modifier</a>
+                            <a href="{{ path('app_delete_livre', { id: book.id }) }}" class="btn">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="no-books">Aucun livre trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_livre_new') }}" class="add-new">Ajouter un nouveau livre</a>
+    </div>
+</body>
+</html>

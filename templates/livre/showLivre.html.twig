@@ -1,0 +1,14 @@
+{# templates/livre/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Livre Details{% endblock %}
+
+{% block body %}
+    <h1>{{ livre.title }}</h1>
+    <p><strong>Reference:</strong> {{ livre.Ref }}</p>
+    <p><strong>Number of Pages:</strong> {{ livre.nbrPages }}</p>
+    <p><strong>Picture URL:</strong> {{ livre.Picture }}</p>
+    <p><strong>Author:</strong> {{ livre.author.name }}</p>
+
+{% endblock %}
